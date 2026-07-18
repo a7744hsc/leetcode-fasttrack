@@ -1,3 +1,5 @@
+**简体中文** | [English](README_EN.md)
+
 # LeetCode 主流算法最小完备题单
 
 ## 题单来源
