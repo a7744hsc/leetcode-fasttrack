@@ -1,4 +1,4 @@
-[简体中文](README.md) | **English**
+[简体中文](README.md) | **English** | [Progress Tracker](https://a7744hsc.github.io/leetcode-fasttrack/)
 
 # Minimal Complete List of Mainstream LeetCode Algorithms
 
@@ -18,6 +18,7 @@ This list draws on [EndlessCheng's "How to Practice Problems Scientifically?"](h
 ## How to Use This List
 
 - I recommend reading the "Pattern & Use Cases" section for each topic before attempting the problems, with the goal of understanding the underlying pattern. Some ideas are especially clever, so there is no need to remain stuck for too long; consult a solution when appropriate. Afterward, summarize the template and the conditions under which it applies.
+- The [progress tracker](https://a7744hsc.github.io/leetcode-fasttrack/) stores completion status in the current browser and supports import and export for moving progress between devices.
 
 Contributions of missing patterns and corrections are welcome.
 

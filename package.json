@@ -1,0 +1,13 @@
+{
+  "name": "leetcode-fasttrack",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-data.mjs",
+    "check": "node scripts/build-data.mjs --check"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

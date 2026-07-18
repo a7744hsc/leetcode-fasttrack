@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Track your progress through 96 mainstream LeetCode algorithm patterns."
+    />
+    <meta name="theme-color" content="#f3f7f5" />
+    <title>学习进度 · LeetCode FastTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+      integrity="sha384-uTYyvsSSUZeaPhb5RbKlQa0zY/WpX/QHfvg2mczXyBQOpkWPEDy9lczyp+w7SKXu"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#pattern-list" data-i18n="skipToList">跳到题单</a>
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="LeetCode FastTrack">
+        <span class="brand-mark" aria-hidden="true">FT</span>
+        <span class="brand-copy">
+          <strong>LeetCode FastTrack</strong>
+          <span data-i18n="brandSubtitle">最小完备题单</span>
+        </span>
+      </a>
+
+      <div class="topbar-actions">
+        <span class="save-status">
+          <i data-lucide="hard-drive" aria-hidden="true"></i>
+          <span data-i18n="savedLocally">本机保存</span>
+        </span>
+
+        <div class="segmented language-switcher" aria-label="Language">
+          <button type="button" data-language="zh" aria-pressed="true">中</button>
+          <button type="button" data-language="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a
+          class="icon-button"
+          href="https://github.com/a7744hsc/leetcode-fasttrack"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
+        >
+          <i data-lucide="github" aria-hidden="true"></i>
+        </a>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-labelledby="phase-nav-title">
+        <div class="sidebar-heading">
+          <div>
+            <p class="eyebrow" data-i18n="roadmap">学习路线</p>
+            <h2 id="phase-nav-title" data-i18n="phases">阶段</h2>
+          </div>
+          <span id="phase-completion">0 / 9</span>
+        </div>
+        <nav id="phase-nav" class="phase-nav" aria-label="学习阶段"></nav>
+      </aside>
+
+      <main class="main-content">
+        <section class="overview" aria-labelledby="page-title">
+          <div class="overview-copy">
+            <p class="eyebrow">LEETCODE FASTTRACK / 01—96</p>
+            <h1 id="page-title" data-i18n="pageTitle">学习进度</h1>
+            <p id="progress-summary" class="progress-summary">正在加载题单…</p>
+            <button id="continue-button" class="primary-button" type="button">
+              <span data-i18n="continueLearning">继续学习</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="progress-panel" aria-label="总体进度">
+            <div class="progress-number">
+              <strong id="progress-percent">0%</strong>
+              <span data-i18n="overallProgress">总体进度</span>
+            </div>
+            <div
+              id="overall-progress-track"
+              class="progress-track"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="192"
+              aria-valuenow="0"
+            >
+              <span id="overall-progress-bar"></span>
+            </div>
+            <dl class="stat-grid">
+              <div>
+                <dt data-i18n="completedProblems">完成题目</dt>
+                <dd id="completed-problems">0 / 192</dd>
+              </div>
+              <div>
+                <dt data-i18n="masteredPatterns">掌握模式</dt>
+                <dd id="mastered-patterns">0 / 96</dd>
+              </div>
+              <div>
+                <dt data-i18n="completedToday">今日完成</dt>
+                <dd id="completed-today">0</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="toolbar" aria-label="题单筛选">
+          <label class="search-field" for="search-input">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input
+              id="search-input"
+              type="search"
+              autocomplete="off"
+              placeholder="搜索模式或题目"
+              data-i18n-placeholder="searchPlaceholder"
+            />
+          </label>
+
+          <div class="segmented status-filter" aria-label="完成状态">
+            <button type="button" data-status="all" aria-pressed="true" data-i18n="all">全部</button>
+            <button type="button" data-status="todo" aria-pressed="false" data-i18n="todo">待完成</button>
+            <button type="button" data-status="done" aria-pressed="false" data-i18n="mastered">已掌握</button>
+          </div>
+
+          <div class="data-actions">
+            <button id="import-button" class="secondary-button" type="button" title="导入进度">
+              <i data-lucide="upload" aria-hidden="true"></i>
+              <span data-i18n="import">导入</span>
+            </button>
+            <button id="export-button" class="secondary-button" type="button" title="导出进度">
+              <i data-lucide="download" aria-hidden="true"></i>
+              <span data-i18n="export">导出</span>
+            </button>
+            <button id="reset-button" class="icon-button danger-button" type="button" title="重置进度">
+              <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+              <span class="visually-hidden" data-i18n="reset">重置</span>
+            </button>
+          </div>
+          <input id="import-file" type="file" accept="application/json,.json" hidden />
+        </section>
+
+        <section class="results" aria-labelledby="results-title">
+          <header class="results-heading">
+            <div>
+              <p id="results-kicker" class="eyebrow" data-i18n="allPhases">全部阶段</p>
+              <h2 id="results-title" data-i18n="patternList">模式题单</h2>
+            </div>
+            <span id="results-count">96 patterns</span>
+          </header>
+
+          <div id="loading-state" class="loading-state" role="status">
+            <span class="loading-line"></span>
+            <span class="loading-line"></span>
+            <span class="loading-line"></span>
+          </div>
+          <div id="empty-state" class="empty-state" hidden>
+            <i data-lucide="search-x" aria-hidden="true"></i>
+            <h3 data-i18n="noResults">没有匹配的模式</h3>
+            <button id="clear-filters-button" class="secondary-button" type="button" data-i18n="clearFilters">
+              清除筛选
+            </button>
+          </div>
+          <div id="pattern-list" class="pattern-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="reset-dialog" class="confirm-dialog">
+      <form method="dialog">
+        <div class="dialog-icon" aria-hidden="true">
+          <i data-lucide="rotate-ccw"></i>
+        </div>
+        <h2 data-i18n="resetTitle">重置全部进度？</h2>
+        <p data-i18n="resetMessage">所有已完成记录将从当前浏览器中删除。</p>
+        <div class="dialog-actions">
+          <button class="secondary-button" value="cancel" data-i18n="cancel">取消</button>
+          <button id="confirm-reset-button" class="danger-confirm-button" value="confirm" data-i18n="confirmReset">
+            确认重置
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <template id="phase-button-template">
+      <button class="phase-button" type="button">
+        <span class="phase-button-copy">
+          <span class="phase-number"></span>
+          <strong class="phase-title"></strong>
+        </span>
+        <span class="phase-progress"></span>
+      </button>
+    </template>
+
+    <template id="pattern-template">
+      <article class="pattern-card">
+        <header class="pattern-header">
+          <span class="pattern-index"></span>
+          <div class="pattern-copy">
+            <h3 class="pattern-title"></h3>
+            <p class="pattern-description"></p>
+          </div>
+          <span class="pattern-status"></span>
+        </header>
+        <div class="problem-list"></div>
+      </article>
+    </template>
+
+    <template id="problem-template">
+      <div class="problem-row">
+        <label class="problem-checkbox">
+          <input type="checkbox" />
+          <span class="checkbox-visual" aria-hidden="true">
+            <i data-lucide="check"></i>
+          </span>
+          <span class="visually-hidden problem-checkbox-label"></span>
+        </label>
+        <span class="problem-slot"></span>
+        <div class="problem-copy">
+          <strong class="problem-title"></strong>
+          <span class="problem-note"></span>
+        </div>
+        <div class="problem-links">
+          <a class="problem-link cn-link" target="_blank" rel="noreferrer">
+            <span>CN</span>
+            <i data-lucide="external-link" aria-hidden="true"></i>
+          </a>
+          <a class="problem-link global-link" target="_blank" rel="noreferrer">
+            <span data-i18n="globalLink">Global</span>
+            <i data-lucide="external-link" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>

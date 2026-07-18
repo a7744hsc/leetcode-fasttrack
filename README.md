@@ -1,4 +1,4 @@
-**简体中文** | [English](README_EN.md)
+**简体中文** | [English](README_EN.md) | [在线学习进度](https://a7744hsc.github.io/leetcode-fasttrack/)
 
 # LeetCode 主流算法最小完备题单
 
@@ -18,6 +18,7 @@
 ## 使用说明
 
 - 个人建议先阅读每个专题的“考察与技巧”，再尝试解题；以理解解题模式为目标。有些解题思路很巧妙，不必过分死磕，卡住时可以及时参考题解。完成后总结模板和适用条件。
+- [在线学习进度](https://a7744hsc.github.io/leetcode-fasttrack/)会将完成状态保存在当前浏览器中，并支持导入、导出以便迁移到其他设备。
 
 欢迎贡献缺失的模式和勘误。
 
