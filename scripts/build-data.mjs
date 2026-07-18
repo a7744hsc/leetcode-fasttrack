@@ -202,7 +202,7 @@ const data = mergeData(chinese, english);
 const serialized = `${JSON.stringify(data, null, 2)}\n`;
 
 if (checkOnly) {
-  const existing = await readFile(outputPath, "utf8");
+  const existing = (await readFile(outputPath, "utf8")).replace(/\r\n/g, "\n");
   assert(existing === serialized, "site/data.json is stale; run npm run build");
 } else {
   await mkdir(dirname(outputPath), { recursive: true });
