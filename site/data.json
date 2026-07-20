@@ -378,8 +378,8 @@
         "en": "Same-Direction Two Pointers and In-Place Modification"
       },
       "description": {
-        "zh": "用一个指针扫描未处理元素，另一个指针维护已处理区间的边界，通过覆盖或交换原地更新数组。适用于删除、筛选、去重、移动或分区元素，并要求 $O(1)$ 额外空间的问题。",
-        "en": "Let one pointer scan unprocessed elements while another maintains the boundary of the processed region, updating the array in place through overwrites or swaps. Use it for deleting, filtering, deduplicating, moving, or partitioning elements when $O(1)$ extra space is required."
+        "zh": "用一个指针扫描未处理元素，另一个指针维护已处理区间的边界，通过覆盖或交换原地更新数组；其中三路分区是荷兰国旗算法（Dutch National Flag algorithm）的核心形式。适用于删除、筛选、去重、移动或分区元素，并要求 $O(1)$ 额外空间的问题。",
+        "en": "Let one pointer scan unprocessed elements while another maintains the boundary of the processed region, updating the array in place through overwrites or swaps; three-way partitioning is the core form of the Dutch national flag algorithm. Use it for deleting, filtering, deduplicating, moving, or partitioning elements when $O(1)$ extra space is required."
       },
       "problems": [
         {
@@ -1654,8 +1654,8 @@
         "en": "Grid DFS and Connected Components"
       },
       "description": {
-        "zh": "把格子视为图节点，进入格子时立即标记，再沿合法方向递归访问；当多个起点共享相同转移规则时，也可从终点边界反向搜索。适用于网格连通块计数、区域标记、可达性判断和边界扩散问题。",
-        "en": "Treat cells as graph nodes, mark a cell immediately upon entering it, and recursively visit valid directions; when multiple starts share the same transition rules, you can also search backward from destination boundaries. Use it for counting grid components, marking regions, testing reachability, and propagating from boundaries."
+        "zh": "把格子视为图节点，进入格子时立即标记，再沿合法方向递归访问，这种按连通区域扩张的遍历也称泛洪填充（Flood Fill）算法；当多个起点共享相同转移规则时，也可从终点边界反向搜索。适用于网格连通块计数、区域标记、可达性判断和边界扩散问题。",
+        "en": "Treat cells as graph nodes, mark a cell immediately upon entering it, and recursively visit valid directions; this traversal that expands through a connected region is also called the flood-fill algorithm. When multiple starts share the same transition rules, you can also search backward from destination boundaries. Use it for counting grid components, marking regions, testing reachability, and propagating from boundaries."
       },
       "problems": [
         {
@@ -1786,8 +1786,8 @@
         "en": "Topological Sort"
       },
       "description": {
-        "zh": "将所有入度为 0 的节点加入队列，依次移除它们的出边，并继续处理新变为入度 0 的节点；最终未能处理全部节点说明存在环。适用于有向依赖关系的可行性判断、执行顺序生成和环检测问题。",
-        "en": "Enqueue every node with indegree 0, remove their outgoing edges in turn, and continue with nodes whose indegree becomes 0; if not all nodes are processed, the graph contains a cycle. Use it to test feasibility in directed dependencies, produce execution orders, and detect cycles."
+        "zh": "Kahn 算法将所有入度为 0 的节点加入队列，依次移除它们的出边，并继续处理新变为入度 0 的节点；最终未能处理全部节点说明存在环。适用于有向依赖关系的可行性判断、执行顺序生成和环检测问题。",
+        "en": "Kahn's algorithm enqueues every node with indegree 0, removes their outgoing edges in turn, and continues with nodes whose indegree becomes 0; if not all nodes are processed, the graph contains a cycle. Use it to test feasibility in directed dependencies, produce execution orders, and detect cycles."
       },
       "problems": [
         {
@@ -2050,8 +2050,8 @@
         "en": "Maximum Subarray DP"
       },
       "description": {
-        "zh": "维护必须以当前位置结尾的最优值，每次在延续上一段和从当前位置重新开始之间选择，并用所有结尾状态更新全局答案。适用于要求连续区间，且加入新元素时只需决定延续还是重启的最值问题，包括环形序列变体。",
-        "en": "Maintain the best value that must end at the current position, choosing between extending the previous segment and restarting at the current position, then update the global answer from all ending states. Use it for extrema over contiguous intervals where adding a new element requires only a choice between continuation and restart, including circular-sequence variants."
+        "zh": "Kadane 算法维护必须以当前位置结尾的最优值，每次在延续上一段和从当前位置重新开始之间选择，并用所有结尾状态更新全局答案。适用于要求连续区间，且加入新元素时只需决定延续还是重启的最值问题，包括环形序列变体。",
+        "en": "Kadane's algorithm maintains the best value that must end at the current position, choosing between extending the previous segment and restarting at the current position, then updates the global answer from all ending states. Use it for extrema over contiguous intervals where adding a new element requires only a choice between continuation and restart, including circular-sequence variants."
       },
       "problems": [
         {
@@ -2226,8 +2226,8 @@
         "en": "Longest Common Subsequence (LCS)"
       },
       "description": {
-        "zh": "定义 `dp[i][j]` 表示两个序列前缀之间的答案，根据末尾元素是否匹配，从同时缩短两侧或只缩短一侧的状态转移。适用于两个序列的公共子序列、序列对齐，以及插入、删除、替换代价问题。",
-        "en": "Define `dp[i][j]` as the answer for two sequence prefixes; depending on whether their final elements match, transition by shortening both sides or only one side. Use it for common subsequences, sequence alignment, and insertion, deletion, or replacement cost problems involving two sequences."
+        "zh": "定义 `dp[i][j]` 表示两个序列前缀之间的答案，根据末尾元素是否匹配，从同时缩短两侧或只缩短一侧的状态转移；其中编辑距离的标准二维 DP 称为 Wagner-Fischer 算法。适用于两个序列的公共子序列、序列对齐，以及插入、删除、替换代价问题。",
+        "en": "Define `dp[i][j]` as the answer for two sequence prefixes; depending on whether their final elements match, transition by shortening both sides or only one side. The standard two-dimensional DP for edit distance is the Wagner-Fischer algorithm. Use it for common subsequences, sequence alignment, and insertion, deletion, or replacement cost problems involving two sequences."
       },
       "problems": [
         {
@@ -2270,8 +2270,8 @@
         "en": "Longest Increasing Subsequence (LIS)"
       },
       "description": {
-        "zh": "可用 `dp[i]` 表示以当前位置结尾的最优长度并枚举前驱，也可维护各长度对应的最小结尾，再用二分将复杂度降为 $O(n\\log n)$。适用于保持原相对顺序的单调子序列，以及由前后单调部分组合答案的问题。",
-        "en": "Either let `dp[i]` be the best length ending at the current position and enumerate predecessors, or maintain the smallest ending value for each length and use binary search to reduce complexity to $O(n\\log n)$. Use it for monotonic subsequences that preserve relative order and for answers composed from monotonic parts on both sides."
+        "zh": "可用 `dp[i]` 表示以当前位置结尾的最优长度并枚举前驱，也可维护各长度对应的最小结尾，再用二分将复杂度降为 $O(n\\log n)$；后一种做法对应耐心排序（Patience Sorting）的牌堆顶思想。适用于保持原相对顺序的单调子序列，以及由前后单调部分组合答案的问题。",
+        "en": "Either let `dp[i]` be the best length ending at the current position and enumerate predecessors, or maintain the smallest ending value for each length and use binary search to reduce complexity to $O(n\\log n)$; the latter uses the pile-top invariant from patience sorting. Use it for monotonic subsequences that preserve relative order and for answers composed from monotonic parts on both sides."
       },
       "problems": [
         {
@@ -2710,8 +2710,8 @@
         "en": "Basic Bit Manipulation"
       },
       "description": {
-        "zh": "利用按位与、或、异或和移位直接操作二进制状态，其中异或可消去成对元素，`x & (x - 1)` 可移除最低位的 1。适用于奇偶性、位计数、成对抵消、状态标记和二进制集合操作问题。",
-        "en": "Use bitwise AND, OR, XOR, and shifts to operate directly on binary state; XOR cancels paired elements, and `x & (x - 1)` removes the lowest set bit. Use it for parity, bit counts, pair cancellation, state flags, and binary-set operations."
+        "zh": "利用按位与、或、异或和移位直接操作二进制状态，其中异或可消去成对元素，`x & (x - 1)` 可移除最低位的 1；重复执行该操作统计置位数就是 Brian Kernighan 算法。适用于奇偶性、位计数、成对抵消、状态标记和二进制集合操作问题。",
+        "en": "Use bitwise AND, OR, XOR, and shifts to operate directly on binary state; XOR cancels paired elements, and `x & (x - 1)` removes the lowest set bit. Repeating that operation to count set bits is Brian Kernighan's algorithm. Use it for parity, bit counts, pair cancellation, state flags, and binary-set operations."
       },
       "problems": [
         {
@@ -2886,8 +2886,8 @@
         "en": "Primality Testing and the Sieve of Eratosthenes"
       },
       "description": {
-        "zh": "单次判断质数只需检查到 $\\sqrt n$，批量处理则用筛法从小到大标记各质数的倍数，一次预处理整个范围。适用于质数计数、区间质数查询，以及需要反复判断多个整数是否为质数的问题。",
-        "en": "To test one number for primality, check divisors only through $\\sqrt n$; for many numbers, preprocess the whole range with a sieve that marks multiples of each prime in increasing order. Use it for prime counts, range-prime queries, and repeated primality tests over many integers."
+        "zh": "单次判断质数只需检查到 $\\sqrt n$，批量处理则用埃拉托斯特尼筛法（Sieve of Eratosthenes）从小到大标记各质数的倍数，一次预处理整个范围。适用于质数计数、区间质数查询，以及需要反复判断多个整数是否为质数的问题。",
+        "en": "To test one number for primality, check divisors only through $\\sqrt n$; for many numbers, preprocess the whole range with the Sieve of Eratosthenes, which marks multiples of each prime in increasing order. Use it for prime counts, range-prime queries, and repeated primality tests over many integers."
       },
       "problems": [
         {
@@ -2930,8 +2930,8 @@
         "en": "Binary Exponentiation and Modular Arithmetic"
       },
       "description": {
-        "zh": "把指数按二进制拆分，通过反复平方和按位选择在 $O(\\log n)$ 内计算幂，并在乘法过程中及时取模控制数值范围。适用于指数很大、结果要求取模，或答案包含指数增长和重复乘法的问题。",
-        "en": "Decompose the exponent into binary, using repeated squaring and conditional multiplication to compute a power in $O(\\log n)$, and reduce modulo during multiplication to control numeric range. Use it when exponents are large, results require a modulus, or the answer involves exponential growth and repeated multiplication."
+        "zh": "二进制快速幂（exponentiation by squaring）把指数按二进制拆分，通过反复平方和按位选择在 $O(\\log n)$ 内计算幂，并在乘法过程中及时取模控制数值范围。适用于指数很大、结果要求取模，或答案包含指数增长和重复乘法的问题。",
+        "en": "Binary exponentiation, also called exponentiation by squaring, decomposes the exponent into binary, using repeated squaring and conditional multiplication to compute a power in $O(\\log n)$, and reduces modulo during multiplication to control numeric range. Use it when exponents are large, results require a modulus, or the answer involves exponential growth and repeated multiplication."
       },
       "problems": [
         {
@@ -2974,8 +2974,8 @@
         "en": "Boyer-Moore Voting"
       },
       "description": {
-        "zh": "将不同元素两两抵消以保留可能的高频候选；出现次数超过 $n/(k+1)$ 的元素最多有 `k` 个，因此可维护有限候选并在最后验证。适用于在线性时间、常数额外空间内寻找超过固定比例阈值的元素。",
-        "en": "Cancel different elements in pairs to retain possible high-frequency candidates; at most `k` elements can occur more than $n/(k+1)$ times, so maintain a bounded set of candidates and verify them at the end. Use it to find elements above a fixed frequency threshold in linear time and constant extra space."
+        "zh": "Boyer-Moore 投票算法将不同元素两两抵消以保留可能的高频候选；出现次数超过 $n/(k+1)$ 的元素最多有 `k` 个，因此可维护有限候选并在最后验证。适用于在线性时间、常数额外空间内寻找超过固定比例阈值的元素。",
+        "en": "The Boyer-Moore voting algorithm cancels different elements in pairs to retain possible high-frequency candidates; at most `k` elements can occur more than $n/(k+1)$ times, so maintain a bounded set of candidates and verify them at the end. Use it to find elements above a fixed frequency threshold in linear time and constant extra space."
       },
       "problems": [
         {
@@ -3018,8 +3018,8 @@
         "en": "KMP"
       },
       "description": {
-        "zh": "用前缀函数记录模式串各前缀的最长相等真前后缀，失配时跳转模式串位置并复用已有匹配，使文本指针无需回退。适用于线性时间字符串匹配，以及分析字符串的边界、周期和重复结构的问题。",
-        "en": "Use the prefix function to record the longest equal proper prefix and suffix for every pattern prefix; on a mismatch, jump within the pattern and reuse existing matches so the text pointer never retreats. Use it for linear-time string matching and for analyzing borders, periods, and repeated string structure."
+        "zh": "KMP（Knuth-Morris-Pratt）算法用前缀函数记录模式串各前缀的最长相等真前后缀，失配时跳转模式串位置并复用已有匹配，使文本指针无需回退。适用于线性时间字符串匹配，以及分析字符串的边界、周期和重复结构的问题。",
+        "en": "The KMP (Knuth-Morris-Pratt) algorithm uses the prefix function to record the longest equal proper prefix and suffix for every pattern prefix; on a mismatch, jump within the pattern and reuse existing matches so the text pointer never retreats. Use it for linear-time string matching and for analyzing borders, periods, and repeated string structure."
       },
       "problems": [
         {
@@ -3106,8 +3106,8 @@
         "en": "Rolling Hash"
       },
       "description": {
-        "zh": "将序列映射为多项式哈希，预处理前缀哈希和幂后可在 $O(1)$ 内取得任意子串哈希，并用双哈希或结果校验降低冲突风险。适用于大量子串比较、重复片段检测，以及结合二分查找长度的问题。",
-        "en": "Map a sequence to a polynomial hash; after precomputing prefix hashes and powers, obtain any substring hash in $O(1)$, using double hashing or result verification to reduce collision risk. Use it for many substring comparisons, duplicate-fragment detection, and problems that combine hashing with binary search on length."
+        "zh": "将序列映射为多项式哈希，预处理前缀哈希和幂后可在 $O(1)$ 内取得任意子串哈希，并用双哈希或结果校验降低冲突风险；Rabin-Karp 字符串匹配算法是滚动哈希的经典应用。适用于大量子串比较、重复片段检测，以及结合二分查找长度的问题。",
+        "en": "Map a sequence to a polynomial hash; after precomputing prefix hashes and powers, obtain any substring hash in $O(1)$, using double hashing or result verification to reduce collision risk. The Rabin-Karp string-matching algorithm is a classic application of rolling hash. Use it for many substring comparisons, duplicate-fragment detection, and problems that combine hashing with binary search on length."
       },
       "problems": [
         {
@@ -3194,8 +3194,8 @@
         "en": "Dijkstra's Shortest Path"
       },
       "description": {
-        "zh": "用最小堆取出当前距离最小的节点，并通过邻边不断松弛其他距离；边权非负时，已确定的最短距离不会被后续路径改善。适用于非负权图的单源最短路，以及路径代价随扩展单调不减的最优路径问题。",
-        "en": "Use a min-heap to extract the node with the smallest current distance and continually relax other distances through adjacent edges; with nonnegative edge weights, a finalized shortest distance cannot be improved by later paths. Use it for single-source shortest paths in nonnegative-weight graphs and optimal-path problems whose cost never decreases as a path is extended."
+        "zh": "Dijkstra 算法用最小堆取出当前距离最小的节点，并通过邻边不断松弛其他距离；边权非负时，已确定的最短距离不会被后续路径改善。适用于非负权图的单源最短路，以及路径代价随扩展单调不减的最优路径问题。",
+        "en": "Dijkstra's algorithm uses a min-heap to extract the node with the smallest current distance and continually relax other distances through adjacent edges; with nonnegative edge weights, a finalized shortest distance cannot be improved by later paths. Use it for single-source shortest paths in nonnegative-weight graphs and optimal-path problems whose cost never decreases as a path is extended."
       },
       "problems": [
         {
@@ -3238,8 +3238,8 @@
         "en": "Floyd-Warshall All-Pairs Shortest Paths"
       },
       "description": {
-        "zh": "依次允许每个节点作为中转点，用 `dist[i][k] + dist[k][j]` 更新任意点对距离，使可用中转点集合逐步扩大。适用于节点数较小、需要查询多组点对最短路或计算传递关系的问题。",
-        "en": "Allow each node in turn as an intermediate and update every pairwise distance with `dist[i][k] + dist[k][j]`, gradually expanding the set of permitted intermediate nodes. Use it when the graph is small and many pairwise shortest paths or transitive relationships must be queried."
+        "zh": "Floyd-Warshall 算法依次允许每个节点作为中转点，用 `dist[i][k] + dist[k][j]` 更新任意点对距离，使可用中转点集合逐步扩大。适用于节点数较小、需要查询多组点对最短路或计算传递关系的问题。",
+        "en": "The Floyd-Warshall algorithm allows each node in turn as an intermediate and updates every pairwise distance with `dist[i][k] + dist[k][j]`, gradually expanding the set of permitted intermediate nodes. Use it when the graph is small and many pairwise shortest paths or transitive relationships must be queried."
       },
       "problems": [
         {
@@ -3370,8 +3370,8 @@
         "en": "0-1 BFS"
       },
       "description": {
-        "zh": "边权仅为 0 或 1 时用双端队列进行松弛：权重 0 的转移放队首，权重 1 的转移放队尾，使节点近似按距离递增处理。适用于只区分免费操作与代价 1 操作的最短路和最少修改次数问题。",
-        "en": "When edge weights are only 0 or 1, relax with a deque: put weight-0 transitions at the front and weight-1 transitions at the back so nodes are processed approximately in increasing distance. Use it for shortest paths and minimum-modification problems that distinguish only free operations from operations costing 1."
+        "zh": "0-1 BFS 在边权仅为 0 或 1 时用双端队列进行松弛：权重 0 的转移放队首，权重 1 的转移放队尾，使节点近似按距离递增处理。适用于只区分免费操作与代价 1 操作的最短路和最少修改次数问题。",
+        "en": "0-1 BFS relaxes edges with a deque when weights are only 0 or 1: put weight-0 transitions at the front and weight-1 transitions at the back so nodes are processed approximately in increasing distance. Use it for shortest paths and minimum-modification problems that distinguish only free operations from operations costing 1."
       },
       "problems": [
         {
@@ -3678,8 +3678,8 @@
         "en": "Monotonic Search in 2D Matrices"
       },
       "description": {
-        "zh": "全局按行衔接有序的矩阵可映射为一维数组二分；行列分别单调时从右上角或左下角出发，每次比较都能排除一整行或一整列。适用于具有整体有序或行列双重单调性的矩阵查找问题。",
-        "en": "A matrix whose rows connect in globally sorted order can be mapped to a one-dimensional array for binary search; when rows and columns are each monotonic, start at the top-right or bottom-left corner so every comparison eliminates an entire row or column. Use it for matrix search with global ordering or simultaneous row and column monotonicity."
+        "zh": "全局按行衔接有序的矩阵可映射为一维数组二分；行列分别单调时使用阶梯搜索（staircase search），从右上角或左下角出发，每次比较都能排除一整行或一整列。适用于具有整体有序或行列双重单调性的矩阵查找问题。",
+        "en": "A matrix whose rows connect in globally sorted order can be mapped to a one-dimensional array for binary search; when rows and columns are each monotonic, use staircase search from the top-right or bottom-left corner so every comparison eliminates an entire row or column. Use it for matrix search with global ordering or simultaneous row and column monotonicity."
       },
       "problems": [
         {
@@ -3854,8 +3854,8 @@
         "en": "Linked List Merging and Merge-Sort Divide and Conquer"
       },
       "description": {
-        "zh": "用虚拟头节点线性合并两个有序链表；对更长链表可用快慢指针切半，递归处理两侧后再归并。适用于有序链表合并，以及要求 $O(n\\log n)$ 时间、较少额外空间的链表排序问题。",
-        "en": "Merge two sorted linked lists linearly with a dummy head; for a longer list, split it in half with fast and slow pointers, recursively process both sides, and merge them. Use it for merging sorted linked lists and sorting linked lists in $O(n\\log n)$ time with little extra space."
+        "zh": "用虚拟头节点线性合并两个有序链表；对更长链表使用归并排序（Merge Sort），以快慢指针切半，递归处理两侧后再归并。适用于有序链表合并，以及要求 $O(n\\log n)$ 时间、较少额外空间的链表排序问题。",
+        "en": "Merge two sorted linked lists linearly with a dummy head; for a longer list, apply Merge Sort by splitting it in half with fast and slow pointers, recursively processing both sides, and merging them. Use it for merging sorted linked lists and sorting linked lists in $O(n\\log n)$ time with little extra space."
       },
       "problems": [
         {
@@ -4030,8 +4030,8 @@
         "en": "Product and Sign-State DP"
       },
       "description": {
-        "zh": "负数会交换最大与最小、正与负状态的作用，因此每个位置必须同时维护一对相反状态，再根据当前元素符号完成转移。适用于连续区间的乘积最值、乘积符号或其他会因负数发生优劣翻转的问题。",
-        "en": "Negative numbers swap the roles of maximum and minimum, or positive and negative, so maintain a pair of opposing states at every position and transition according to the current element's sign. Use it for extrema or signs of products over contiguous intervals and other problems where negative values reverse the ordering of states."
+        "zh": "这种方法可视为 Kadane 算法的双状态变体：负数会交换最大与最小、正与负状态的作用，因此每个位置必须同时维护一对相反状态，再根据当前元素符号完成转移。适用于连续区间的乘积最值、乘积符号或其他会因负数发生优劣翻转的问题。",
+        "en": "This method can be viewed as a two-state variant of Kadane's algorithm: negative numbers swap the roles of maximum and minimum, or positive and negative, so maintain a pair of opposing states at every position and transition according to the current element's sign. Use it for extrema or signs of products over contiguous intervals and other problems where negative values reverse the ordering of states."
       },
       "problems": [
         {
@@ -4294,8 +4294,8 @@
         "en": "Tarjan's Algorithm"
       },
       "description": {
-        "zh": "DFS 中维护访问时间 `dfn` 与可经树边和返祖边到达的最早时间 `low`，根据二者关系识别无法绕开的连接结构。适用于寻找无向图的桥、割点，以及使用相应 Tarjan 变体求有向图强连通分量的问题。",
-        "en": "During DFS, maintain discovery time `dfn` and the earliest time `low` reachable through tree and back edges, then identify unavoidable connection structures from their relationship. Use it to find bridges and articulation points in undirected graphs and, with the corresponding Tarjan variant, strongly connected components in directed graphs."
+        "zh": "Tarjan 算法在 DFS 中维护访问时间 `dfn` 与可经树边和返祖边到达的最早时间 `low`，根据二者关系识别无法绕开的连接结构。适用于寻找无向图的桥、割点，以及使用相应 Tarjan 变体求有向图强连通分量的问题。",
+        "en": "Tarjan's algorithm maintains discovery time `dfn` and the earliest time `low` reachable through tree and back edges during DFS, then identifies unavoidable connection structures from their relationship. Use it to find bridges and articulation points in undirected graphs and, with the corresponding Tarjan variant, strongly connected components in directed graphs."
       },
       "problems": [
         {

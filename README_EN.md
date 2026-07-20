@@ -58,7 +58,7 @@ The core idea is to enumerate the right side while maintaining the left side.
 
 ## 5. Same-Direction Two Pointers and In-Place Modification
 
-> **Pattern & Use Cases:** Let one pointer scan unprocessed elements while another maintains the boundary of the processed region, updating the array in place through overwrites or swaps. Use it for deleting, filtering, deduplicating, moving, or partitioning elements when $O(1)$ extra space is required.
+> **Pattern & Use Cases:** Let one pointer scan unprocessed elements while another maintains the boundary of the processed region, updating the array in place through overwrites or swaps; three-way partitioning is the core form of the Dutch national flag algorithm. Use it for deleting, filtering, deduplicating, moving, or partitioning elements when $O(1)$ extra space is required.
 
 - [ ] A: 283. Move Zeroes ([LeetCode CN](https://leetcode.cn/problems/move-zeroes/) | [LeetCode](https://leetcode.com/problems/move-zeroes/))
 - [ ] B: 75. Sort Colors ([LeetCode CN](https://leetcode.cn/problems/sort-colors/) | [LeetCode](https://leetcode.com/problems/sort-colors/)) — three pointers
@@ -194,7 +194,7 @@ Although Problem 239 is officially rated hard, it is the standard monotonic-queu
 - [ ] B: 92. Reverse Linked List II ([LeetCode CN](https://leetcode.cn/problems/reverse-linked-list-ii/) | [LeetCode](https://leetcode.com/problems/reverse-linked-list-ii/))
 
 ## 22. Fast and Slow Pointers in Linked Lists
-
+> **Pattern & Use Cases:** Move two pointers at different speeds and use their positional difference or periodicity to infer linked-list structure; cycle detection and entry location use Floyd's cycle-finding algorithm (the tortoise-and-hare algorithm), while the loop condition determines whether the pointer lands on the left or right middle node for an even-length list. Use it to find the middle of a linked list, detect a cycle, or locate the cycle entry.
 > **Pattern & Use Cases:** Advance two pointers at different speeds and use their positional difference or periodic behavior to infer linked-list structure; the loop condition determines whether an even-length list yields the left or right middle node. Use it to find a list's middle, detect a cycle, and locate the cycle entry.
 
 - [ ] A: 876. Middle of the Linked List ([LeetCode CN](https://leetcode.cn/problems/middle-of-the-linked-list/) | [LeetCode](https://leetcode.com/problems/middle-of-the-linked-list/))
@@ -291,7 +291,7 @@ Problem 124 is a classic hard problem; skip it temporarily if your fundamentals 
 
 ## 34. Grid DFS and Connected Components
 
-> **Pattern & Use Cases:** Treat cells as graph nodes, mark a cell immediately upon entering it, and recursively visit valid directions; when multiple starts share the same transition rules, you can also search backward from destination boundaries. Use it for counting grid components, marking regions, testing reachability, and propagating from boundaries.
+> **Pattern & Use Cases:** Treat cells as graph nodes, mark a cell immediately upon entering it, and recursively visit valid directions; this traversal that expands through a connected region is also called the flood-fill algorithm. When multiple starts share the same transition rules, you can also search backward from destination boundaries. Use it for counting grid components, marking regions, testing reachability, and propagating from boundaries.
 
 - [ ] A: 200. Number of Islands ([LeetCode CN](https://leetcode.cn/problems/number-of-islands/) | [LeetCode](https://leetcode.com/problems/number-of-islands/))
 - [ ] B: 417. Pacific Atlantic Water Flow ([LeetCode CN](https://leetcode.cn/problems/pacific-atlantic-water-flow/) | [LeetCode](https://leetcode.com/problems/pacific-atlantic-water-flow/))
@@ -312,7 +312,7 @@ Problem 124 is a classic hard problem; skip it temporarily if your fundamentals 
 
 ## 37. Topological Sort
 
-> **Pattern & Use Cases:** Enqueue every node with indegree 0, remove their outgoing edges in turn, and continue with nodes whose indegree becomes 0; if not all nodes are processed, the graph contains a cycle. Use it to test feasibility in directed dependencies, produce execution orders, and detect cycles.
+> **Pattern & Use Cases:** Kahn's algorithm enqueues every node with indegree 0, removes their outgoing edges in turn, and continues with nodes whose indegree becomes 0; if not all nodes are processed, the graph contains a cycle. Use it to test feasibility in directed dependencies, produce execution orders, and detect cycles.
 
 - [ ] A: 207. Course Schedule ([LeetCode CN](https://leetcode.cn/problems/course-schedule/) | [LeetCode](https://leetcode.com/problems/course-schedule/))
 - [ ] B: 210. Course Schedule II ([LeetCode CN](https://leetcode.cn/problems/course-schedule-ii/) | [LeetCode](https://leetcode.com/problems/course-schedule-ii/))
@@ -360,7 +360,7 @@ The key is to abstract each state as a graph node.
 
 ## 43. Maximum Subarray DP
 
-> **Pattern & Use Cases:** Maintain the best value that must end at the current position, choosing between extending the previous segment and restarting at the current position, then update the global answer from all ending states. Use it for extrema over contiguous intervals where adding a new element requires only a choice between continuation and restart, including circular-sequence variants.
+> **Pattern & Use Cases:** Kadane's algorithm maintains the best value that must end at the current position, choosing between extending the previous segment and restarting at the current position, then updates the global answer from all ending states. Use it for extrema over contiguous intervals where adding a new element requires only a choice between continuation and restart, including circular-sequence variants.
 
 - [ ] A: 53. Maximum Subarray ([LeetCode CN](https://leetcode.cn/problems/maximum-subarray/) | [LeetCode](https://leetcode.com/problems/maximum-subarray/))
 - [ ] B: 918. Maximum Sum Circular Subarray ([LeetCode CN](https://leetcode.cn/problems/maximum-sum-circular-subarray/) | [LeetCode](https://leetcode.com/problems/maximum-sum-circular-subarray/))
@@ -390,14 +390,14 @@ Understand the differences among minimizing a value, counting solutions, and the
 
 ## 47. Longest Common Subsequence (LCS)
 
-> **Pattern & Use Cases:** Define `dp[i][j]` as the answer for two sequence prefixes; depending on whether their final elements match, transition by shortening both sides or only one side. Use it for common subsequences, sequence alignment, and insertion, deletion, or replacement cost problems involving two sequences.
+> **Pattern & Use Cases:** Define `dp[i][j]` as the answer for two sequence prefixes; depending on whether their final elements match, transition by shortening both sides or only one side. The standard two-dimensional DP for edit distance is the Wagner-Fischer algorithm. Use it for common subsequences, sequence alignment, and insertion, deletion, or replacement cost problems involving two sequences.
 
 - [ ] A: 1143. Longest Common Subsequence ([LeetCode CN](https://leetcode.cn/problems/longest-common-subsequence/) | [LeetCode](https://leetcode.com/problems/longest-common-subsequence/))
 - [ ] B: 72. Edit Distance ([LeetCode CN](https://leetcode.cn/problems/edit-distance/) | [LeetCode](https://leetcode.com/problems/edit-distance/))
 
 ## 48. Longest Increasing Subsequence (LIS)
 
-> **Pattern & Use Cases:** Either let `dp[i]` be the best length ending at the current position and enumerate predecessors, or maintain the smallest ending value for each length and use binary search to reduce complexity to $O(n\log n)$. Use it for monotonic subsequences that preserve relative order and for answers composed from monotonic parts on both sides.
+> **Pattern & Use Cases:** Either let `dp[i]` be the best length ending at the current position and enumerate predecessors, or maintain the smallest ending value for each length and use binary search to reduce complexity to $O(n\log n)$; the latter uses the pile-top invariant from patience sorting. Use it for monotonic subsequences that preserve relative order and for answers composed from monotonic parts on both sides.
 
 - [ ] A: 300. Longest Increasing Subsequence ([LeetCode CN](https://leetcode.cn/problems/longest-increasing-subsequence/) | [LeetCode](https://leetcode.com/problems/longest-increasing-subsequence/))
 - [ ] B: 1671. Minimum Number of Removals to Make Mountain Array ([LeetCode CN](https://leetcode.cn/problems/minimum-number-of-removals-to-make-mountain-array/) | [LeetCode](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/))
@@ -475,7 +475,7 @@ The key is to calculate how many answer objects contain each element.
 
 ## 58. Basic Bit Manipulation
 
-> **Pattern & Use Cases:** Use bitwise AND, OR, XOR, and shifts to operate directly on binary state; XOR cancels paired elements, and `x & (x - 1)` removes the lowest set bit. Use it for parity, bit counts, pair cancellation, state flags, and binary-set operations.
+> **Pattern & Use Cases:** Use bitwise AND, OR, XOR, and shifts to operate directly on binary state; XOR cancels paired elements, and `x & (x - 1)` removes the lowest set bit. Repeating that operation to count set bits is Brian Kernighan's algorithm. Use it for parity, bit counts, pair cancellation, state flags, and binary-set operations.
 
 - [ ] A: 136. Single Number ([LeetCode CN](https://leetcode.cn/problems/single-number/) | [LeetCode](https://leetcode.com/problems/single-number/))
 - [ ] B: 338. Counting Bits ([LeetCode CN](https://leetcode.cn/problems/counting-bits/) | [LeetCode](https://leetcode.com/problems/counting-bits/))
@@ -503,21 +503,21 @@ The key is to calculate how many answer objects contain each element.
 
 ## 62. Primality Testing and the Sieve of Eratosthenes
 
-> **Pattern & Use Cases:** To test one number for primality, check divisors only through $\sqrt n$; for many numbers, preprocess the whole range with a sieve that marks multiples of each prime in increasing order. Use it for prime counts, range-prime queries, and repeated primality tests over many integers.
+> **Pattern & Use Cases:** To test one number for primality, check divisors only through $\sqrt n$; for many numbers, preprocess the whole range with the Sieve of Eratosthenes, which marks multiples of each prime in increasing order. Use it for prime counts, range-prime queries, and repeated primality tests over many integers.
 
 - [ ] A: 204. Count Primes ([LeetCode CN](https://leetcode.cn/problems/count-primes/) | [LeetCode](https://leetcode.com/problems/count-primes/))
 - [ ] B: 2523. Closest Prime Numbers in Range ([LeetCode CN](https://leetcode.cn/problems/closest-prime-numbers-in-range/) | [LeetCode](https://leetcode.com/problems/closest-prime-numbers-in-range/))
 
 ## 63. Binary Exponentiation and Modular Arithmetic
 
-> **Pattern & Use Cases:** Decompose the exponent into binary, using repeated squaring and conditional multiplication to compute a power in $O(\log n)$, and reduce modulo during multiplication to control numeric range. Use it when exponents are large, results require a modulus, or the answer involves exponential growth and repeated multiplication.
+> **Pattern & Use Cases:** Binary exponentiation, also called exponentiation by squaring, decomposes the exponent into binary, using repeated squaring and conditional multiplication to compute a power in $O(\log n)$, and reduces modulo during multiplication to control numeric range. Use it when exponents are large, results require a modulus, or the answer involves exponential growth and repeated multiplication.
 
 - [ ] A: 50. Pow(x, n) ([LeetCode CN](https://leetcode.cn/problems/powx-n/) | [LeetCode](https://leetcode.com/problems/powx-n/))
 - [ ] B: 1922. Count Good Numbers ([LeetCode CN](https://leetcode.cn/problems/count-good-numbers/) | [LeetCode](https://leetcode.com/problems/count-good-numbers/))
 
 ## 64. Boyer-Moore Voting
 
-> **Pattern & Use Cases:** Cancel different elements in pairs to retain possible high-frequency candidates; at most `k` elements can occur more than $n/(k+1)$ times, so maintain a bounded set of candidates and verify them at the end. Use it to find elements above a fixed frequency threshold in linear time and constant extra space.
+> **Pattern & Use Cases:** The Boyer-Moore voting algorithm cancels different elements in pairs to retain possible high-frequency candidates; at most `k` elements can occur more than $n/(k+1)$ times, so maintain a bounded set of candidates and verify them at the end. Use it to find elements above a fixed frequency threshold in linear time and constant extra space.
 
 - [ ] A: 169. Majority Element ([LeetCode CN](https://leetcode.cn/problems/majority-element/) | [LeetCode](https://leetcode.com/problems/majority-element/))
 - [ ] B: 229. Majority Element II ([LeetCode CN](https://leetcode.cn/problems/majority-element-ii/) | [LeetCode](https://leetcode.com/problems/majority-element-ii/))
@@ -528,7 +528,7 @@ The key is to calculate how many answer objects contain each element.
 
 ## 65. KMP
 
-> **Pattern & Use Cases:** Use the prefix function to record the longest equal proper prefix and suffix for every pattern prefix; on a mismatch, jump within the pattern and reuse existing matches so the text pointer never retreats. Use it for linear-time string matching and for analyzing borders, periods, and repeated string structure.
+> **Pattern & Use Cases:** The KMP (Knuth-Morris-Pratt) algorithm uses the prefix function to record the longest equal proper prefix and suffix for every pattern prefix; on a mismatch, jump within the pattern and reuse existing matches so the text pointer never retreats. Use it for linear-time string matching and for analyzing borders, periods, and repeated string structure.
 
 - [ ] A: 28. Find the Index of the First Occurrence in a String ([LeetCode CN](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/) | [LeetCode](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/))
 - [ ] B: 459. Repeated Substring Pattern ([LeetCode CN](https://leetcode.cn/problems/repeated-substring-pattern/) | [LeetCode](https://leetcode.com/problems/repeated-substring-pattern/))
@@ -544,7 +544,7 @@ Solve both with center expansion first, then rewrite them using Manacher's algor
 
 ## 67. Rolling Hash
 
-> **Pattern & Use Cases:** Map a sequence to a polynomial hash; after precomputing prefix hashes and powers, obtain any substring hash in $O(1)$, using double hashing or result verification to reduce collision risk. Use it for many substring comparisons, duplicate-fragment detection, and problems that combine hashing with binary search on length.
+> **Pattern & Use Cases:** Map a sequence to a polynomial hash; after precomputing prefix hashes and powers, obtain any substring hash in $O(1)$, using double hashing or result verification to reduce collision risk. The Rabin-Karp string-matching algorithm is a classic application of rolling hash. Use it for many substring comparisons, duplicate-fragment detection, and problems that combine hashing with binary search on length.
 
 - [ ] A: 187. Repeated DNA Sequences ([LeetCode CN](https://leetcode.cn/problems/repeated-dna-sequences/) | [LeetCode](https://leetcode.com/problems/repeated-dna-sequences/))
 - [ ] B: 718. Maximum Length of Repeated Subarray ([LeetCode CN](https://leetcode.cn/problems/maximum-length-of-repeated-subarray/) | [LeetCode](https://leetcode.com/problems/maximum-length-of-repeated-subarray/))
@@ -562,14 +562,14 @@ Solve both with center expansion first, then rewrite them using Manacher's algor
 
 ## 69. Dijkstra's Shortest Path
 
-> **Pattern & Use Cases:** Use a min-heap to extract the node with the smallest current distance and continually relax other distances through adjacent edges; with nonnegative edge weights, a finalized shortest distance cannot be improved by later paths. Use it for single-source shortest paths in nonnegative-weight graphs and optimal-path problems whose cost never decreases as a path is extended.
+> **Pattern & Use Cases:** Dijkstra's algorithm uses a min-heap to extract the node with the smallest current distance and continually relax other distances through adjacent edges; with nonnegative edge weights, a finalized shortest distance cannot be improved by later paths. Use it for single-source shortest paths in nonnegative-weight graphs and optimal-path problems whose cost never decreases as a path is extended.
 
 - [ ] A: 743. Network Delay Time ([LeetCode CN](https://leetcode.cn/problems/network-delay-time/) | [LeetCode](https://leetcode.com/problems/network-delay-time/))
 - [ ] B: 1631. Path With Minimum Effort ([LeetCode CN](https://leetcode.cn/problems/path-with-minimum-effort/) | [LeetCode](https://leetcode.com/problems/path-with-minimum-effort/))
 
 ## 70. Floyd-Warshall All-Pairs Shortest Paths
 
-> **Pattern & Use Cases:** Allow each node in turn as an intermediate and update every pairwise distance with `dist[i][k] + dist[k][j]`, gradually expanding the set of permitted intermediate nodes. Use it when the graph is small and many pairwise shortest paths or transitive relationships must be queried.
+> **Pattern & Use Cases:** The Floyd-Warshall algorithm allows each node in turn as an intermediate and updates every pairwise distance with `dist[i][k] + dist[k][j]`, gradually expanding the set of permitted intermediate nodes. Use it when the graph is small and many pairwise shortest paths or transitive relationships must be queried.
 
 - [ ] A: 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance ([LeetCode CN](https://leetcode.cn/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/) | [LeetCode](https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/))
 - [ ] B: 2976. Minimum Cost to Convert String I ([LeetCode CN](https://leetcode.cn/problems/minimum-cost-to-convert-string-i/) | [LeetCode](https://leetcode.com/problems/minimum-cost-to-convert-string-i/))
@@ -590,7 +590,7 @@ Solve both with center expansion first, then rewrite them using Manacher's algor
 
 ## 73. 0-1 BFS
 
-> **Pattern & Use Cases:** When edge weights are only 0 or 1, relax with a deque: put weight-0 transitions at the front and weight-1 transitions at the back so nodes are processed approximately in increasing distance. Use it for shortest paths and minimum-modification problems that distinguish only free operations from operations costing 1.
+> **Pattern & Use Cases:** 0-1 BFS relaxes edges with a deque when weights are only 0 or 1: put weight-0 transitions at the front and weight-1 transitions at the back so nodes are processed approximately in increasing distance. Use it for shortest paths and minimum-modification problems that distinguish only free operations from operations costing 1.
 
 - [ ] A: 1368. Minimum Cost to Make at Least One Valid Path in a Grid ([LeetCode CN](https://leetcode.cn/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/) | [LeetCode](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/))
 - [ ] B: 2290. Minimum Obstacle Removal to Reach Corner ([LeetCode CN](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/) | [LeetCode](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/))
@@ -651,7 +651,7 @@ Although Problem 42 is officially rated hard, its two-pointer solution is a well
 
 ## 80. Monotonic Search in 2D Matrices
 
-> **Pattern & Use Cases:** A matrix whose rows connect in globally sorted order can be mapped to a one-dimensional array for binary search; when rows and columns are each monotonic, start at the top-right or bottom-left corner so every comparison eliminates an entire row or column. Use it for matrix search with global ordering or simultaneous row and column monotonicity.
+> **Pattern & Use Cases:** A matrix whose rows connect in globally sorted order can be mapped to a one-dimensional array for binary search; when rows and columns are each monotonic, use staircase search from the top-right or bottom-left corner so every comparison eliminates an entire row or column. Use it for matrix search with global ordering or simultaneous row and column monotonicity.
 
 - [ ] A: 74. Search a 2D Matrix ([LeetCode CN](https://leetcode.cn/problems/search-a-2d-matrix/) | [LeetCode](https://leetcode.com/problems/search-a-2d-matrix/)) — flattened binary search
 - [ ] B: 240. Search a 2D Matrix II ([LeetCode CN](https://leetcode.cn/problems/search-a-2d-matrix-ii/) | [LeetCode](https://leetcode.com/problems/search-a-2d-matrix-ii/)) — staircase search
@@ -681,7 +681,7 @@ Although Problem 84 is officially rated hard, it is the standard boundary templa
 
 ## 84. Linked List Merging and Merge-Sort Divide and Conquer
 
-> **Pattern & Use Cases:** Merge two sorted linked lists linearly with a dummy head; for a longer list, split it in half with fast and slow pointers, recursively process both sides, and merge them. Use it for merging sorted linked lists and sorting linked lists in $O(n\log n)$ time with little extra space.
+> **Pattern & Use Cases:** Merge two sorted linked lists linearly with a dummy head; for a longer list, apply Merge Sort by splitting it in half with fast and slow pointers, recursively processing both sides, and merging them. Use it for merging sorted linked lists and sorting linked lists in $O(n\log n)$ time with little extra space.
 
 - [ ] A: 21. Merge Two Sorted Lists ([LeetCode CN](https://leetcode.cn/problems/merge-two-sorted-lists/) | [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/))
 - [ ] B: 148. Sort List ([LeetCode CN](https://leetcode.cn/problems/sort-list/) | [LeetCode](https://leetcode.com/problems/sort-list/))
@@ -709,7 +709,7 @@ Although Problem 84 is officially rated hard, it is the standard boundary templa
 
 ## 88. Product and Sign-State DP
 
-> **Pattern & Use Cases:** Negative numbers swap the roles of maximum and minimum, or positive and negative, so maintain a pair of opposing states at every position and transition according to the current element's sign. Use it for extrema or signs of products over contiguous intervals and other problems where negative values reverse the ordering of states.
+> **Pattern & Use Cases:** This method can be viewed as a two-state variant of Kadane's algorithm: negative numbers swap the roles of maximum and minimum, or positive and negative, so maintain a pair of opposing states at every position and transition according to the current element's sign. Use it for extrema or signs of products over contiguous intervals and other problems where negative values reverse the ordering of states.
 
 - [ ] A: 152. Maximum Product Subarray ([LeetCode CN](https://leetcode.cn/problems/maximum-product-subarray/) | [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)) — maintain both maximum and minimum products
 - [ ] B: 1567. Maximum Length of Subarray With Positive Product ([LeetCode CN](https://leetcode.cn/problems/maximum-length-of-subarray-with-positive-product/) | [LeetCode](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/)) — maintain lengths for both positive and negative products
@@ -757,7 +757,7 @@ The following algorithms appear in the complete list but are significantly less 
 
 ## 94. Tarjan's Algorithm
 
-> **Pattern & Use Cases:** During DFS, maintain discovery time `dfn` and the earliest time `low` reachable through tree and back edges, then identify unavoidable connection structures from their relationship. Use it to find bridges and articulation points in undirected graphs and, with the corresponding Tarjan variant, strongly connected components in directed graphs.
+> **Pattern & Use Cases:** Tarjan's algorithm maintains discovery time `dfn` and the earliest time `low` reachable through tree and back edges during DFS, then identifies unavoidable connection structures from their relationship. Use it to find bridges and articulation points in undirected graphs and, with the corresponding Tarjan variant, strongly connected components in directed graphs.
 
 - [ ] A: 1192. Critical Connections in a Network ([LeetCode CN](https://leetcode.cn/problems/critical-connections-in-a-network/) | [LeetCode](https://leetcode.com/problems/critical-connections-in-a-network/))
 - [ ] B: 1568. Minimum Number of Days to Disconnect Island ([LeetCode CN](https://leetcode.cn/problems/minimum-number-of-days-to-disconnect-island/) | [LeetCode](https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/))

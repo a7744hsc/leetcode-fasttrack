@@ -58,7 +58,7 @@
 
 ## 5. 同向双指针与原地修改
 
-> **考察与技巧：** 用一个指针扫描未处理元素，另一个指针维护已处理区间的边界，通过覆盖或交换原地更新数组。适用于删除、筛选、去重、移动或分区元素，并要求 $O(1)$ 额外空间的问题。
+> **考察与技巧：** 用一个指针扫描未处理元素，另一个指针维护已处理区间的边界，通过覆盖或交换原地更新数组；其中三路分区是荷兰国旗算法（Dutch National Flag algorithm）的核心形式。适用于删除、筛选、去重、移动或分区元素，并要求 $O(1)$ 额外空间的问题。
 
 - [ ] A：283. 移动零（[中国站](https://leetcode.cn/problems/move-zeroes/)｜[国际站](https://leetcode.com/problems/move-zeroes/)）
 - [ ] B：75. 颜色分类（[中国站](https://leetcode.cn/problems/sort-colors/)｜[国际站](https://leetcode.com/problems/sort-colors/)）——三指针
@@ -194,7 +194,7 @@
 - [ ] B：92. 反转链表 II（[中国站](https://leetcode.cn/problems/reverse-linked-list-ii/)｜[国际站](https://leetcode.com/problems/reverse-linked-list-ii/)）
 
 ## 22. 链表快慢指针
-
+> **考察与技巧：** 让两个指针以不同速度前进，利用它们的位置差或周期性判断链表结构；其中检测环与定位环入口对应 Floyd 判圈算法（龟兔赛跑算法），循环条件则决定偶数长度时落在左中点还是右中点。适用于寻找链表中点、检测环及定位环入口的问题。
 > **考察与技巧：** 让两个指针以不同速度前进，利用它们的位置差或周期性判断链表结构；循环条件决定偶数长度时落在左中点还是右中点。适用于寻找链表中点、检测环及定位环入口的问题。
 
 - [ ] A：876. 链表的中间结点（[中国站](https://leetcode.cn/problems/middle-of-the-linked-list/)｜[国际站](https://leetcode.com/problems/middle-of-the-linked-list/)）
@@ -291,7 +291,7 @@
 
 ## 34. 网格 DFS 与连通块
 
-> **考察与技巧：** 把格子视为图节点，进入格子时立即标记，再沿合法方向递归访问；当多个起点共享相同转移规则时，也可从终点边界反向搜索。适用于网格连通块计数、区域标记、可达性判断和边界扩散问题。
+> **考察与技巧：** 把格子视为图节点，进入格子时立即标记，再沿合法方向递归访问，这种按连通区域扩张的遍历也称泛洪填充（Flood Fill）算法；当多个起点共享相同转移规则时，也可从终点边界反向搜索。适用于网格连通块计数、区域标记、可达性判断和边界扩散问题。
 
 - [ ] A：200. 岛屿数量（[中国站](https://leetcode.cn/problems/number-of-islands/)｜[国际站](https://leetcode.com/problems/number-of-islands/)）
 - [ ] B：417. 太平洋大西洋水流问题（[中国站](https://leetcode.cn/problems/pacific-atlantic-water-flow/)｜[国际站](https://leetcode.com/problems/pacific-atlantic-water-flow/)）
@@ -312,7 +312,7 @@
 
 ## 37. 拓扑排序
 
-> **考察与技巧：** 将所有入度为 0 的节点加入队列，依次移除它们的出边，并继续处理新变为入度 0 的节点；最终未能处理全部节点说明存在环。适用于有向依赖关系的可行性判断、执行顺序生成和环检测问题。
+> **考察与技巧：** Kahn 算法将所有入度为 0 的节点加入队列，依次移除它们的出边，并继续处理新变为入度 0 的节点；最终未能处理全部节点说明存在环。适用于有向依赖关系的可行性判断、执行顺序生成和环检测问题。
 
 - [ ] A：207. 课程表（[中国站](https://leetcode.cn/problems/course-schedule/)｜[国际站](https://leetcode.com/problems/course-schedule/)）
 - [ ] B：210. 课程表 II（[中国站](https://leetcode.cn/problems/course-schedule-ii/)｜[国际站](https://leetcode.com/problems/course-schedule-ii/)）
@@ -360,7 +360,7 @@
 
 ## 43. 最大子数组 DP
 
-> **考察与技巧：** 维护必须以当前位置结尾的最优值，每次在延续上一段和从当前位置重新开始之间选择，并用所有结尾状态更新全局答案。适用于要求连续区间，且加入新元素时只需决定延续还是重启的最值问题，包括环形序列变体。
+> **考察与技巧：** Kadane 算法维护必须以当前位置结尾的最优值，每次在延续上一段和从当前位置重新开始之间选择，并用所有结尾状态更新全局答案。适用于要求连续区间，且加入新元素时只需决定延续还是重启的最值问题，包括环形序列变体。
 
 - [ ] A：53. 最大子数组和（[中国站](https://leetcode.cn/problems/maximum-subarray/)｜[国际站](https://leetcode.com/problems/maximum-subarray/)）
 - [ ] B：918. 环形子数组的最大和（[中国站](https://leetcode.cn/problems/maximum-sum-circular-subarray/)｜[国际站](https://leetcode.com/problems/maximum-sum-circular-subarray/)）
@@ -390,14 +390,14 @@
 
 ## 47. 最长公共子序列 LCS
 
-> **考察与技巧：** 定义 `dp[i][j]` 表示两个序列前缀之间的答案，根据末尾元素是否匹配，从同时缩短两侧或只缩短一侧的状态转移。适用于两个序列的公共子序列、序列对齐，以及插入、删除、替换代价问题。
+> **考察与技巧：** 定义 `dp[i][j]` 表示两个序列前缀之间的答案，根据末尾元素是否匹配，从同时缩短两侧或只缩短一侧的状态转移；其中编辑距离的标准二维 DP 称为 Wagner-Fischer 算法。适用于两个序列的公共子序列、序列对齐，以及插入、删除、替换代价问题。
 
 - [ ] A：1143. 最长公共子序列（[中国站](https://leetcode.cn/problems/longest-common-subsequence/)｜[国际站](https://leetcode.com/problems/longest-common-subsequence/)）
 - [ ] B：72. 编辑距离（[中国站](https://leetcode.cn/problems/edit-distance/)｜[国际站](https://leetcode.com/problems/edit-distance/)）
 
 ## 48. 最长递增子序列 LIS
 
-> **考察与技巧：** 可用 `dp[i]` 表示以当前位置结尾的最优长度并枚举前驱，也可维护各长度对应的最小结尾，再用二分将复杂度降为 $O(n\log n)$。适用于保持原相对顺序的单调子序列，以及由前后单调部分组合答案的问题。
+> **考察与技巧：** 可用 `dp[i]` 表示以当前位置结尾的最优长度并枚举前驱，也可维护各长度对应的最小结尾，再用二分将复杂度降为 $O(n\log n)$；后一种做法对应耐心排序（Patience Sorting）的牌堆顶思想。适用于保持原相对顺序的单调子序列，以及由前后单调部分组合答案的问题。
 
 - [ ] A：300. 最长递增子序列（[中国站](https://leetcode.cn/problems/longest-increasing-subsequence/)｜[国际站](https://leetcode.com/problems/longest-increasing-subsequence/)）
 - [ ] B：1671. 得到山形数组的最少删除次数（[中国站](https://leetcode.cn/problems/minimum-number-of-removals-to-make-mountain-array/)｜[国际站](https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/)）
@@ -475,7 +475,7 @@
 
 ## 58. 基础位运算
 
-> **考察与技巧：** 利用按位与、或、异或和移位直接操作二进制状态，其中异或可消去成对元素，`x & (x - 1)` 可移除最低位的 1。适用于奇偶性、位计数、成对抵消、状态标记和二进制集合操作问题。
+> **考察与技巧：** 利用按位与、或、异或和移位直接操作二进制状态，其中异或可消去成对元素，`x & (x - 1)` 可移除最低位的 1；重复执行该操作统计置位数就是 Brian Kernighan 算法。适用于奇偶性、位计数、成对抵消、状态标记和二进制集合操作问题。
 
 - [ ] A：136. 只出现一次的数字（[中国站](https://leetcode.cn/problems/single-number/)｜[国际站](https://leetcode.com/problems/single-number/)）
 - [ ] B：338. 比特位计数（[中国站](https://leetcode.cn/problems/counting-bits/)｜[国际站](https://leetcode.com/problems/counting-bits/)）
@@ -503,21 +503,21 @@
 
 ## 62. 质数判断与埃氏筛
 
-> **考察与技巧：** 单次判断质数只需检查到 $\sqrt n$，批量处理则用筛法从小到大标记各质数的倍数，一次预处理整个范围。适用于质数计数、区间质数查询，以及需要反复判断多个整数是否为质数的问题。
+> **考察与技巧：** 单次判断质数只需检查到 $\sqrt n$，批量处理则用埃拉托斯特尼筛法（Sieve of Eratosthenes）从小到大标记各质数的倍数，一次预处理整个范围。适用于质数计数、区间质数查询，以及需要反复判断多个整数是否为质数的问题。
 
 - [ ] A：204. 计数质数（[中国站](https://leetcode.cn/problems/count-primes/)｜[国际站](https://leetcode.com/problems/count-primes/)）
 - [ ] B：2523. 范围内最接近的两个质数（[中国站](https://leetcode.cn/problems/closest-prime-numbers-in-range/)｜[国际站](https://leetcode.com/problems/closest-prime-numbers-in-range/)）
 
 ## 63. 快速幂与模运算
 
-> **考察与技巧：** 把指数按二进制拆分，通过反复平方和按位选择在 $O(\log n)$ 内计算幂，并在乘法过程中及时取模控制数值范围。适用于指数很大、结果要求取模，或答案包含指数增长和重复乘法的问题。
+> **考察与技巧：** 二进制快速幂（exponentiation by squaring）把指数按二进制拆分，通过反复平方和按位选择在 $O(\log n)$ 内计算幂，并在乘法过程中及时取模控制数值范围。适用于指数很大、结果要求取模，或答案包含指数增长和重复乘法的问题。
 
 - [ ] A：50. Pow(x, n)（[中国站](https://leetcode.cn/problems/powx-n/)｜[国际站](https://leetcode.com/problems/powx-n/)）
 - [ ] B：1922. 统计好数字的数目（[中国站](https://leetcode.cn/problems/count-good-numbers/)｜[国际站](https://leetcode.com/problems/count-good-numbers/)）
 
 ## 64. 摩尔投票
 
-> **考察与技巧：** 将不同元素两两抵消以保留可能的高频候选；出现次数超过 $n/(k+1)$ 的元素最多有 `k` 个，因此可维护有限候选并在最后验证。适用于在线性时间、常数额外空间内寻找超过固定比例阈值的元素。
+> **考察与技巧：** Boyer-Moore 投票算法将不同元素两两抵消以保留可能的高频候选；出现次数超过 $n/(k+1)$ 的元素最多有 `k` 个，因此可维护有限候选并在最后验证。适用于在线性时间、常数额外空间内寻找超过固定比例阈值的元素。
 
 - [ ] A：169. 多数元素（[中国站](https://leetcode.cn/problems/majority-element/)｜[国际站](https://leetcode.com/problems/majority-element/)）
 - [ ] B：229. 多数元素 II（[中国站](https://leetcode.cn/problems/majority-element-ii/)｜[国际站](https://leetcode.com/problems/majority-element-ii/)）
@@ -528,7 +528,7 @@
 
 ## 65. KMP
 
-> **考察与技巧：** 用前缀函数记录模式串各前缀的最长相等真前后缀，失配时跳转模式串位置并复用已有匹配，使文本指针无需回退。适用于线性时间字符串匹配，以及分析字符串的边界、周期和重复结构的问题。
+> **考察与技巧：** KMP（Knuth-Morris-Pratt）算法用前缀函数记录模式串各前缀的最长相等真前后缀，失配时跳转模式串位置并复用已有匹配，使文本指针无需回退。适用于线性时间字符串匹配，以及分析字符串的边界、周期和重复结构的问题。
 
 - [ ] A：28. 找出字符串中第一个匹配项的下标（[中国站](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/)｜[国际站](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)）
 - [ ] B：459. 重复的子字符串（[中国站](https://leetcode.cn/problems/repeated-substring-pattern/)｜[国际站](https://leetcode.com/problems/repeated-substring-pattern/)）
@@ -544,7 +544,7 @@
 
 ## 67. 滚动哈希
 
-> **考察与技巧：** 将序列映射为多项式哈希，预处理前缀哈希和幂后可在 $O(1)$ 内取得任意子串哈希，并用双哈希或结果校验降低冲突风险。适用于大量子串比较、重复片段检测，以及结合二分查找长度的问题。
+> **考察与技巧：** 将序列映射为多项式哈希，预处理前缀哈希和幂后可在 $O(1)$ 内取得任意子串哈希，并用双哈希或结果校验降低冲突风险；Rabin-Karp 字符串匹配算法是滚动哈希的经典应用。适用于大量子串比较、重复片段检测，以及结合二分查找长度的问题。
 
 - [ ] A：187. 重复的 DNA 序列（[中国站](https://leetcode.cn/problems/repeated-dna-sequences/)｜[国际站](https://leetcode.com/problems/repeated-dna-sequences/)）
 - [ ] B：718. 最长重复子数组（[中国站](https://leetcode.cn/problems/maximum-length-of-repeated-subarray/)｜[国际站](https://leetcode.com/problems/maximum-length-of-repeated-subarray/)）
@@ -562,14 +562,14 @@
 
 ## 69. Dijkstra 最短路
 
-> **考察与技巧：** 用最小堆取出当前距离最小的节点，并通过邻边不断松弛其他距离；边权非负时，已确定的最短距离不会被后续路径改善。适用于非负权图的单源最短路，以及路径代价随扩展单调不减的最优路径问题。
+> **考察与技巧：** Dijkstra 算法用最小堆取出当前距离最小的节点，并通过邻边不断松弛其他距离；边权非负时，已确定的最短距离不会被后续路径改善。适用于非负权图的单源最短路，以及路径代价随扩展单调不减的最优路径问题。
 
 - [ ] A：743. 网络延迟时间（[中国站](https://leetcode.cn/problems/network-delay-time/)｜[国际站](https://leetcode.com/problems/network-delay-time/)）
 - [ ] B：1631. 最小体力消耗路径（[中国站](https://leetcode.cn/problems/path-with-minimum-effort/)｜[国际站](https://leetcode.com/problems/path-with-minimum-effort/)）
 
 ## 70. Floyd 全源最短路
 
-> **考察与技巧：** 依次允许每个节点作为中转点，用 `dist[i][k] + dist[k][j]` 更新任意点对距离，使可用中转点集合逐步扩大。适用于节点数较小、需要查询多组点对最短路或计算传递关系的问题。
+> **考察与技巧：** Floyd-Warshall 算法依次允许每个节点作为中转点，用 `dist[i][k] + dist[k][j]` 更新任意点对距离，使可用中转点集合逐步扩大。适用于节点数较小、需要查询多组点对最短路或计算传递关系的问题。
 
 - [ ] A：1334. 阈值距离内邻居最少的城市（[中国站](https://leetcode.cn/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/)｜[国际站](https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/)）
 - [ ] B：2976. 转换字符串的最小成本 I（[中国站](https://leetcode.cn/problems/minimum-cost-to-convert-string-i/)｜[国际站](https://leetcode.com/problems/minimum-cost-to-convert-string-i/)）
@@ -590,7 +590,7 @@
 
 ## 73. 0-1 BFS
 
-> **考察与技巧：** 边权仅为 0 或 1 时用双端队列进行松弛：权重 0 的转移放队首，权重 1 的转移放队尾，使节点近似按距离递增处理。适用于只区分免费操作与代价 1 操作的最短路和最少修改次数问题。
+> **考察与技巧：** 0-1 BFS 在边权仅为 0 或 1 时用双端队列进行松弛：权重 0 的转移放队首，权重 1 的转移放队尾，使节点近似按距离递增处理。适用于只区分免费操作与代价 1 操作的最短路和最少修改次数问题。
 
 - [ ] A：1368. 使网格图至少有一条有效路径的最小代价（[中国站](https://leetcode.cn/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)｜[国际站](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/)）
 - [ ] B：2290. 到达角落需要移除障碍物的最小数目（[中国站](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)｜[国际站](https://leetcode.com/problems/minimum-obstacle-removal-to-reach-corner/)）
@@ -651,7 +651,7 @@
 
 ## 80. 二维矩阵单调搜索
 
-> **考察与技巧：** 全局按行衔接有序的矩阵可映射为一维数组二分；行列分别单调时从右上角或左下角出发，每次比较都能排除一整行或一整列。适用于具有整体有序或行列双重单调性的矩阵查找问题。
+> **考察与技巧：** 全局按行衔接有序的矩阵可映射为一维数组二分；行列分别单调时使用阶梯搜索（staircase search），从右上角或左下角出发，每次比较都能排除一整行或一整列。适用于具有整体有序或行列双重单调性的矩阵查找问题。
 
 - [ ] A：74. 搜索二维矩阵（[中国站](https://leetcode.cn/problems/search-a-2d-matrix/)｜[国际站](https://leetcode.com/problems/search-a-2d-matrix/)）——一维化二分
 - [ ] B：240. 搜索二维矩阵 II（[中国站](https://leetcode.cn/problems/search-a-2d-matrix-ii/)｜[国际站](https://leetcode.com/problems/search-a-2d-matrix-ii/)）——阶梯式搜索
@@ -681,7 +681,7 @@
 
 ## 84. 链表合并与归并分治
 
-> **考察与技巧：** 用虚拟头节点线性合并两个有序链表；对更长链表可用快慢指针切半，递归处理两侧后再归并。适用于有序链表合并，以及要求 $O(n\log n)$ 时间、较少额外空间的链表排序问题。
+> **考察与技巧：** 用虚拟头节点线性合并两个有序链表；对更长链表使用归并排序（Merge Sort），以快慢指针切半，递归处理两侧后再归并。适用于有序链表合并，以及要求 $O(n\log n)$ 时间、较少额外空间的链表排序问题。
 
 - [ ] A：21. 合并两个有序链表（[中国站](https://leetcode.cn/problems/merge-two-sorted-lists/)｜[国际站](https://leetcode.com/problems/merge-two-sorted-lists/)）
 - [ ] B：148. 排序链表（[中国站](https://leetcode.cn/problems/sort-list/)｜[国际站](https://leetcode.com/problems/sort-list/)）
@@ -709,7 +709,7 @@
 
 ## 88. 乘积与正负状态 DP
 
-> **考察与技巧：** 负数会交换最大与最小、正与负状态的作用，因此每个位置必须同时维护一对相反状态，再根据当前元素符号完成转移。适用于连续区间的乘积最值、乘积符号或其他会因负数发生优劣翻转的问题。
+> **考察与技巧：** 这种方法可视为 Kadane 算法的双状态变体：负数会交换最大与最小、正与负状态的作用，因此每个位置必须同时维护一对相反状态，再根据当前元素符号完成转移。适用于连续区间的乘积最值、乘积符号或其他会因负数发生优劣翻转的问题。
 
 - [ ] A：152. 乘积最大子数组（[中国站](https://leetcode.cn/problems/maximum-product-subarray/)｜[国际站](https://leetcode.com/problems/maximum-product-subarray/)）——同时维护最大积和最小积
 - [ ] B：1567. 乘积为正数的最长子数组长度（[中国站](https://leetcode.cn/problems/maximum-length-of-subarray-with-positive-product/)｜[国际站](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/)）——同时维护正积和负积长度
@@ -757,7 +757,7 @@
 
 ## 94. Tarjan
 
-> **考察与技巧：** DFS 中维护访问时间 `dfn` 与可经树边和返祖边到达的最早时间 `low`，根据二者关系识别无法绕开的连接结构。适用于寻找无向图的桥、割点，以及使用相应 Tarjan 变体求有向图强连通分量的问题。
+> **考察与技巧：** Tarjan 算法在 DFS 中维护访问时间 `dfn` 与可经树边和返祖边到达的最早时间 `low`，根据二者关系识别无法绕开的连接结构。适用于寻找无向图的桥、割点，以及使用相应 Tarjan 变体求有向图强连通分量的问题。
 
 - [ ] A：1192. 查找集群内的关键连接（[中国站](https://leetcode.cn/problems/critical-connections-in-a-network/)｜[国际站](https://leetcode.com/problems/critical-connections-in-a-network/)）
 - [ ] B：1568. 使陆地分离的最少天数（[中国站](https://leetcode.cn/problems/minimum-number-of-days-to-disconnect-island/)｜[国际站](https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/)）
